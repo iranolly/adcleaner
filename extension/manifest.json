@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "AdCleaner 清道夫",
+  "version": "1.0.0",
+  "description": "屏蔽弹窗、视频贴片/暂停广告、搜索引擎广告。规则来自 AdGuard/EasyList/CJX/Peter Lowe 等公开过滤列表。",
+  "minimum_chrome_version": "128",
+  "permissions": ["declarativeNetRequest", "storage", "unlimitedStorage"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "src/background.js" },
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_icon": { "16": "icons/icon16.png", "32": "icons/icon32.png" }
+  },
+  "options_page": "src/options/options.html",
+  "icons": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
+  "declarative_net_request": {
+    "rule_resources": [
+      { "id": "base",       "enabled": true,  "path": "rulesets/base.json" },
+      { "id": "cn",         "enabled": true,  "path": "rulesets/cn.json" },
+      { "id": "annoyances", "enabled": true,  "path": "rulesets/annoyances.json" },
+      { "id": "popups",     "enabled": true,  "path": "rulesets/popups.json" },
+      { "id": "video",      "enabled": true,  "path": "rulesets/video.json" },
+      { "id": "tracking",   "enabled": true,  "path": "rulesets/tracking.json" }
+    ]
+  },
+  "content_scripts": [
+    { "matches": ["<all_urls>"], "js": ["src/content/guard-main.js"], "run_at": "document_start", "world": "MAIN", "all_frames": true },
+    { "matches": ["<all_urls>"], "js": ["src/content/guard-iso.js"], "css": ["src/content/cosmetic.css"], "run_at": "document_start", "all_frames": true }
+  ],
+  "web_accessible_resources": [
+    { "resources": ["src/data/*.json"], "matches": ["<all_urls>"] }
+  ]
+}

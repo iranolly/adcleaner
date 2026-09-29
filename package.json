@@ -1,0 +1,22 @@
+{
+  "name": "adcleaner",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AdCleaner 清道夫 —— 屏蔽弹窗、视频贴片/暂停广告、搜索引擎广告的 Chrome/Edge MV3 扩展（含 Tampermonkey 油猴脚本）",
+  "license": "SEE LICENSE IN README.md",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "npm run build:rules && npm run build:icons",
+    "build:rules": "node tools/build-rules.mjs",
+    "build:icons": "node tools/make-icons.mjs",
+    "build:userscript": "node tools/build-userscript.mjs",
+    "test": "node tools/selftest-guard-iso.mjs && node tools/selftest-userscript.mjs",
+    "verify": "node tools/verify.mjs"
+  },
+  "devDependencies": {
+    "@adguard/dnr-converter": "^2.0.0"
+  }
+}

@@ -1,0 +1,60 @@
+/* AdCleaner cosmetic.css
+ * =============================================================================
+ * 用途：manifest 静态注入的元素隐藏规则（content_scripts[].css），是 guard-iso.js
+ *       异步注入 src/data/cosmetics.json 规则的同步补充。
+ * 依据：SPEC.md 第 8 节 8.1；选择器来源为 EasyList / EasyList China / AdGuard Chinese /
+ *       uBlock Origin uAssets（2026-09-29 快照核对）。
+ * 原则：只隐藏「不带站点限定也不会误伤」的明确 id / class / 属性选择器。
+ *       本文件刻意不使用任何「类名子串匹配」式写法（float / popup / banner / ad 等词
+ *       一律不做子串或后缀匹配），因此不会命中正文、按钮、评论区、登录弹窗等正常内容。
+ * 站点专属规则（含 :has 结构约束的）见 src/data/cosmetics.json。
+ * 限制：纯 CSS，只能隐藏；不处理 JS 注入、不点关闭、不做遮罩解冻（由 guard-iso.js 负责）。
+ */
+
+/* 1) 联盟广告容器与 iframe
+ *    google_ads_iframe / aswift / googlesyndication / ins.adsbygoogle / data-ad-slot /
+ *    div-gpt-ad / BAIDU_SSP 均为广告专用标识，命中即广告。 */
+iframe[id^="google_ads_iframe"],
+iframe[id^="google_ads_frame"],
+iframe[name^="google_ads_iframe"],
+iframe[id^="aswift_"],
+iframe[src*="googlesyndication.com"],
+iframe[src*="pubads.g.doubleclick.net"],
+iframe[src*="adservice.google."],
+iframe[src^="/pagead/"],
+div[id^="div-gpt-ad"],
+div[id^="google_ads_"],
+div[id^="BAIDU_SSP__wrapper_"],
+ins.adsbygoogle,
+.google-auto-placed,
+[data-ad-slot]:not([data-ad-slot=""]),
+[data-ad-client][data-ad-slot],
+[data-google-query-id]:not([data-google-query-id=""]) {
+  display: none !important;
+}
+
+/* 2) 通用对联条 / 浮动广告位 / 弹窗层
+ *    这些 id 与 class 是广告位专用命名，正文区域不会使用。 */
+#cs_left_couplet,
+#cs_right_couplet,
+.ad-couplet-common,
+.adv-couplets,
+#left_float,
+#right_float,
+#left_up_float_ad,
+#left_down_float_ad,
+#right_up_float_ad,
+#right_down_float_ad,
+.floatAd,
+.floating-ad,
+.tanchuang,
+#tanchuang,
+.pop-bottom {
+  display: none !important;
+}
+
+/* 3) 未填充的广告槽位
+ *    AdSense 填充失败时会在容器上标记 data-ad-status="unfilled"，隐藏可去掉空白占位。 */
+[data-ad-status="unfilled"]:not([data-ad-status=""]) {
+  display: none !important;
+}

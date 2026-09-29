@@ -1,0 +1,19 @@
+{
+  "sites": {
+    "youtube.com": {
+      "video": "#movie_player video.html5-main-video, video.html5-main-video",
+      "adState": [".html5-video-player.ad-showing", ".html5-video-player.ad-interrupting", ".ytp-ad-player-overlay"],
+      "skip": ["button.ytp-skip-ad-button", "button.ytp-ad-skip-button-modern", "button.ytp-ad-skip-button", ".ytp-ad-skip-button-container button"],
+      "pauseAd": { "containers": [], "close": [] },
+      "maxAdSeconds": 999,
+      "actions": ["click", "mute", "speed", "seek"]
+    },
+    "iqiyi.com": { "video": "video", "adState": [".maxPauseAd-container", ".overlayAd-container", ".definitionAd-container", ".cupid-panel"], "skip": [".pause-max-close-btn"], "pauseAd": { "containers": [".maxPauseAd-container", ".pause-max-video-mask"], "close": [".pause-max-close-btn"] }, "maxAdSeconds": 300, "actions": ["pause-close", "mute", "speed"] },
+    "v.qq.com": { "video": "video", "adState": [".txp_ad", ".txp_zt", ".txp_ad_center"], "skip": [".txp_ad_skip_text", ".txp_ad_skip", ".txp_ad_active_close", ".txp_zt_close"], "pauseAd": { "containers": [".txp_ad_center"], "close": [] }, "maxAdSeconds": 300, "actions": ["click", "mute", "speed", "seek"] },
+    "youku.com": { "video": "video", "adState": ["#youku-pause-container", ".youku-advertise-layer", "#player-advertise"], "skip": ["#youku-pause-container [class*=close]", ".youku-advertise-layer [class*=close]"], "pauseAd": { "containers": ["#youku-pause-container"], "close": [] }, "maxAdSeconds": 300, "actions": ["pause-close", "click", "mute"] },
+    "mgtv.com": { "video": "video", "adState": [".as_stages-wrapper", "mango-ad-layer", "mango-ad-outter-layer"], "skip": [], "pauseAd": { "containers": [".as_stages-wrapper"], "close": [] }, "maxAdSeconds": 300, "actions": ["mute", "speed"] },
+    "sohu.com": { "video": "video", "adState": ["#miaozhenad", ".middle-insert-ad"], "skip": [], "pauseAd": { "containers": ["#miaozhenad"], "close": [] }, "maxAdSeconds": 300, "actions": ["mute", "speed"] },
+    "le.com": { "video": "video", "adState": [".min_pause_img", ".ad_layer", ".broadcast-adv"], "skip": [], "pauseAd": { "containers": [".min_pause_img"], "close": [] }, "maxAdSeconds": 300, "actions": ["mute", "speed"] }
+  },
+  "generic": { "video": "video", "adState": [], "skip": [], "pauseAd": { "containers": [], "close": [] }, "maxAdSeconds": 180, "actions": ["mute", "speed"] }
+}

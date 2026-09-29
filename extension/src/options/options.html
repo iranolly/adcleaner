@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="color-scheme" content="light dark" />
+    <title>AdCleaner 清道夫 · 选项</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <header class="head">
+      <img src="../../icons/icon48.png" alt="" width="36" height="36" />
+      <div>
+        <h1>AdCleaner 清道夫 · 选项</h1>
+        <p class="muted">屏蔽弹窗广告、视频贴片/暂停广告、搜索引擎广告（Chrome / Edge MV3）</p>
+      </div>
+      <span id="toast" class="toast" role="status" aria-live="polite"></span>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>总览</h2>
+        <div class="row">
+          <div class="row-text">
+            <b>启用 AdCleaner</b>
+            <span class="muted">关闭后停用全部规则集，页面元素也不会被隐藏。</span>
+          </div>
+          <label class="switch"><input type="checkbox" id="enabled" /><span class="slider"></span><span class="sr-only">总开关</span></label>
+        </div>
+        <div class="row">
+          <div class="row-text">
+            <b>视频激进模式</b>
+            <span class="muted">默认关闭。开启后对未知视频站点也会「静音 + 16 倍速」尝试跳过广告；可能误伤正常播放，请谨慎开启。</span>
+          </div>
+          <label class="switch"><input type="checkbox" id="videoAggressive" /><span class="slider"></span><span class="sr-only">视频激进模式</span></label>
+        </div>
+        <div class="row">
+          <div class="row-text">
+            <b>弹窗激进模式</b>
+            <span class="muted">默认关闭。开启后会拦截「合成点击触发的 window.open」；个别站点的正常弹窗（客服、分享）可能受影响。</span>
+          </div>
+          <label class="switch"><input type="checkbox" id="popupAggressive" /><span class="slider"></span><span class="sr-only">弹窗激进模式</span></label>
+        </div>
+        <div class="row">
+          <div class="row-text">
+            <b>今日拦截</b>
+            <span class="muted" id="stat-line">—</span>
+          </div>
+          <button type="button" class="btn" id="clear-stats">清空统计</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>规则集</h2>
+        <ul class="list" id="rulesets"></ul>
+      </section>
+
+      <section class="card">
+        <h2>网站白名单</h2>
+        <p class="muted">每行一个域名（可含子域，如 <code>www.example.com</code>）。白名单内的网站不做任何隐藏与拦截。</p>
+        <textarea id="whitelist" rows="6" spellcheck="false" placeholder="example.com&#10;video.example.org"></textarea>
+        <div class="actions">
+          <button type="button" class="btn primary" id="save-whitelist">保存白名单</button>
+          <span class="muted" id="whitelist-hint"></span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>规则来源与许可</h2>
+        <p class="muted">
+          规则集由 <code>npm run build:rules</code> 转换生成，来源见
+          <code>extension/rulesets/_sources.json</code>。转换工具为
+          <code>@adguard/dnr-converter</code>（GPL-3.0，仅构建期使用）。
+        </p>
+        <div id="sources" class="sources">正在读取规则集信息…</div>
+      </section>
+
+      <section class="card">
+        <h2>设置导出 / 导入</h2>
+        <p class="muted">导出为 JSON 文本（含规则集开关、白名单、激进模式；不含统计）。导入会覆盖现有设置。</p>
+        <textarea id="settings-json" rows="8" spellcheck="false"></textarea>
+        <div class="actions">
+          <button type="button" class="btn" id="export-settings">导出到文本框</button>
+          <button type="button" class="btn" id="import-settings">从文本框导入</button>
+          <span class="muted" id="import-hint"></span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>已知限制</h2>
+        <ul class="notes">
+          <li>YouTube 已服务端合流广告（SSAI/SABR），客户端只能在数据层与播放器层尽力加速/跳过，无法保证 100% 去广告。</li>
+          <li>国内视频站可能检测广告拦截并降级清晰度或要求关闭拦截，属正常现象。</li>
+          <li>本作品仅供个人使用；公开分发/上架前请自行确认各过滤列表的许可条款（见 README 许可表）。</li>
+        </ul>
+      </section>
+    </main>
+
+    <script src="options.js"></script>
+  </body>
+</html>

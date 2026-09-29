@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="color-scheme" content="light dark" />
+    <title>AdCleaner 清道夫</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="head">
+      <img class="logo" src="../../icons/icon32.png" alt="" width="28" height="28" />
+      <div class="head-text">
+        <h1>AdCleaner 清道夫</h1>
+        <p id="status" class="status">正在读取设置…</p>
+      </div>
+      <label class="switch" title="总开关">
+        <input type="checkbox" id="enabled" />
+        <span class="slider"></span>
+        <span class="sr-only">总开关</span>
+      </label>
+    </header>
+
+    <section class="card row">
+      <div class="stat">
+        <span id="stat-today" class="stat-num">0</span>
+        <small>今日拦截</small>
+      </div>
+      <button id="pause-site" class="btn" type="button">暂停在此网站</button>
+    </section>
+
+    <section class="card">
+      <h2>规则集</h2>
+      <ul id="rulesets" class="list"></ul>
+      <p class="tip">规则来自 AdGuard / EasyList / CJX / Peter Lowe 等公开过滤列表，按需启停。</p>
+    </section>
+
+    <section class="card">
+      <button id="open-options" class="btn primary block" type="button">选项与白名单</button>
+      <p id="site-tip" class="tip"></p>
+    </section>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,274 @@
+{
+  "generatedAt": "2026-09-29T10:32:13Z",
+  "generatedDate": "2026-09-29",
+  "converter": "@adguard/dnr-converter@2.0.0",
+  "node": "v24.11.0",
+  "notes": "每项记录形如 {file, sourceUrl, fetchedAt, license, ruleCount}；status 为 OK/OK_CACHED/HANDWRITTEN/SEED_APPENDED/FALLBACK/FAILED/CONVERT_FAILED，fetchMethod 记录实际下载通道（fetch / curl / cache，用 + 连接多段拼接来源）。FALLBACK 表示该列表下载或转换失败，已用 SPEC 4.4 种子域名兜底。sanitize 记录 requestDomains 安全过滤：剔除单标签(TLD)/IP 条目与因剔空而丢弃的规则数及示例。",
+  "budget": "转换类规则集合计 13953 条（预算 30000）",
+  "sanitize": {
+    "sanitizedDroppedRules": 31,
+    "removedDomains": 56,
+    "examples": [
+      "base:com(block)",
+      "base:net(block)",
+      "base:top(block)",
+      "base:space(block)",
+      "base:top(block)",
+      "base:biz(block)",
+      "base:com(block)",
+      "base:click(block)",
+      "base:cfd(block)",
+      "base:click(block)",
+      "base:pro(block)",
+      "base:world(block)"
+    ],
+    "droppedExamples": [
+      "base:丢弃 block [com]",
+      "base:丢弃 block [net]",
+      "base:丢弃 block [top]",
+      "base:丢弃 block [space,top]",
+      "base:丢弃 block [biz,com]",
+      "base:丢弃 block [click]",
+      "base:丢弃 block [cfd,click,pro,world,xyz]",
+      "base:丢弃 block [live]",
+      "base:丢弃 block [live]",
+      "base:丢弃 block [live]",
+      "base:丢弃 block [info]",
+      "base:丢弃 block [top]"
+    ]
+  },
+  "failures": [],
+  "files": [
+    {
+      "file": "extension/rulesets/base.json",
+      "rulesetId": "base",
+      "rules": 3939,
+      "regexRules": 0,
+      "unsafeRules": 0,
+      "bytes": 832396,
+      "humanSizeKB": 812.9,
+      "fallback": false,
+      "handwritten": false,
+      "trimmed": 0,
+      "sanitizedDroppedRules": 31,
+      "sanitizedDomains": 50,
+      "sanitizeExamples": [
+        "base:com(block)",
+        "base:net(block)",
+        "base:top(block)",
+        "base:space(block)",
+        "base:top(block)",
+        "base:biz(block)",
+        "base:com(block)",
+        "base:click(block)",
+        "base:cfd(block)",
+        "base:click(block)",
+        "base:pro(block)",
+        "base:world(block)"
+      ],
+      "sanitizeDroppedExamples": [
+        "base:丢弃 block [com]",
+        "base:丢弃 block [net]",
+        "base:丢弃 block [top]",
+        "base:丢弃 block [space,top]",
+        "base:丢弃 block [biz,com]",
+        "base:丢弃 block [click]",
+        "base:丢弃 block [cfd,click,pro,world,xyz]",
+        "base:丢弃 block [live]",
+        "base:丢弃 block [live]",
+        "base:丢弃 block [live]",
+        "base:丢弃 block [info]",
+        "base:丢弃 block [top]"
+      ]
+    },
+    {
+      "file": "extension/rulesets/cn.json",
+      "rulesetId": "cn",
+      "rules": 6874,
+      "regexRules": 0,
+      "unsafeRules": 18,
+      "bytes": 911976,
+      "humanSizeKB": 890.6,
+      "fallback": false,
+      "handwritten": false,
+      "trimmed": 0,
+      "sanitizedDroppedRules": 0,
+      "sanitizedDomains": 5,
+      "sanitizeExamples": [
+        "cn:154.7.80.158(block)",
+        "cn:194.59.220.161(block)",
+        "cn:205.209.138.102(block)",
+        "cn:23.231.151.252(block)",
+        "cn:60.190.139.164(block)"
+      ],
+      "sanitizeDroppedExamples": []
+    },
+    {
+      "file": "extension/rulesets/annoyances.json",
+      "rulesetId": "annoyances",
+      "rules": 621,
+      "regexRules": 0,
+      "unsafeRules": 1,
+      "bytes": 73597,
+      "humanSizeKB": 71.9,
+      "fallback": false,
+      "handwritten": false,
+      "trimmed": 0,
+      "sanitizedDroppedRules": 0,
+      "sanitizedDomains": 1,
+      "sanitizeExamples": [
+        "annoyances:113.105.248.169(block)"
+      ],
+      "sanitizeDroppedExamples": []
+    },
+    {
+      "file": "extension/rulesets/popups.json",
+      "rulesetId": "popups",
+      "rules": 4,
+      "regexRules": 0,
+      "unsafeRules": 0,
+      "bytes": 606,
+      "humanSizeKB": 0.6,
+      "fallback": false,
+      "handwritten": true,
+      "trimmed": 0,
+      "sanitizedDroppedRules": 0,
+      "sanitizedDomains": 0,
+      "sanitizeExamples": [],
+      "sanitizeDroppedExamples": []
+    },
+    {
+      "file": "extension/rulesets/video.json",
+      "rulesetId": "video",
+      "rules": 16,
+      "regexRules": 0,
+      "unsafeRules": 0,
+      "bytes": 2079,
+      "humanSizeKB": 2,
+      "fallback": false,
+      "handwritten": true,
+      "trimmed": 0,
+      "sanitizedDroppedRules": 0,
+      "sanitizedDomains": 0,
+      "sanitizeExamples": [],
+      "sanitizeDroppedExamples": []
+    },
+    {
+      "file": "extension/rulesets/tracking.json",
+      "rulesetId": "tracking",
+      "rules": 2519,
+      "regexRules": 0,
+      "unsafeRules": 2519,
+      "bytes": 601324,
+      "humanSizeKB": 587.2,
+      "fallback": false,
+      "handwritten": false,
+      "trimmed": 0,
+      "sanitizedDroppedRules": 0,
+      "sanitizedDomains": 0,
+      "sanitizeExamples": [],
+      "sanitizeDroppedExamples": []
+    }
+  ],
+  "sources": [
+    {
+      "file": "base.json",
+      "sourceUrl": "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=adblockplus&showintro=0&mimetype=plaintext",
+      "fetchedAt": "2026-09-29T10:32:07Z",
+      "license": "No SPDX（免费使用，需注明来源 pgl.yoyo.org）",
+      "ruleCount": 3551,
+      "name": "Peter Lowe's Ad and tracking server list",
+      "status": "OK",
+      "fetchMethod": "fetch",
+      "conversionErrors": 0,
+      "errorKinds": {}
+    },
+    {
+      "file": "base.json",
+      "sourceUrl": "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt",
+      "fetchedAt": "2026-09-29T10:32:08Z",
+      "license": "GPL-3.0",
+      "ruleCount": 4028,
+      "name": "uBlock Origin uAssets – badware",
+      "status": "OK",
+      "fetchMethod": "fetch",
+      "conversionErrors": 222,
+      "errorKinds": {
+        "Error": 58,
+        "UnsupportedRegexpError": 156,
+        "UnsupportedModifierError": 8
+      }
+    },
+    {
+      "file": "cn.json",
+      "sourceUrl": "https://filters.adtidy.org/extension/chromium-mv3/filters/224.txt",
+      "fetchedAt": "2026-09-29T10:32:11Z",
+      "license": "GPL-3.0（AdGuard）/ GPLv3+ & CC BY-SA（EasyList China）",
+      "ruleCount": 12765,
+      "name": "AdGuard Chinese (MV3 变体，含 EasyList China)",
+      "status": "OK",
+      "fetchMethod": "fetch",
+      "conversionErrors": 178,
+      "errorKinds": {
+        "EmptyDomainsError": 2,
+        "UnsupportedRegexpError": 28,
+        "UnsupportedModifierError": 95,
+        "Error": 53
+      }
+    },
+    {
+      "file": "annoyances.json",
+      "sourceUrl": "https://raw.githubusercontent.com/cjx82630/cjxlist/master/cjx-annoyance.txt",
+      "fetchedAt": "2026-09-29T10:32:12Z",
+      "license": "LGPL-3.0",
+      "ruleCount": 737,
+      "name": "CJX List – cjx-annoyance",
+      "status": "OK",
+      "fetchMethod": "fetch",
+      "conversionErrors": 0,
+      "errorKinds": {}
+    },
+    {
+      "file": "tracking.json",
+      "sourceUrl": "https://filters.adtidy.org/extension/ublock/filters/17.txt",
+      "fetchedAt": "2026-09-29T10:32:13Z",
+      "license": "GPL-3.0",
+      "ruleCount": 2520,
+      "name": "AdGuard URL Tracking Filter",
+      "status": "OK",
+      "fetchMethod": "fetch",
+      "conversionErrors": 171,
+      "errorKinds": {
+        "Error": 30,
+        "UnsupportedModifierError": 141
+      }
+    },
+    {
+      "file": "base.json",
+      "sourceUrl": "seed://SPEC-4.4（脚本内硬编码种子域名，见 tools/build-rules.mjs）",
+      "fetchedAt": "2026-09-29T10:32:13Z",
+      "license": "本项目自编（公开已知广告/追踪域名清单）",
+      "ruleCount": 1,
+      "name": "SPEC 4.4 种子域名（附加，146 个域名）",
+      "status": "SEED_APPENDED"
+    },
+    {
+      "file": "popups.json",
+      "sourceUrl": "handwritten://SPEC-4.1（手写 popunder 落地域 + 脚本路径）",
+      "fetchedAt": "2026-09-29T10:32:13Z",
+      "license": "本项目自编（MIT，见 README）",
+      "ruleCount": 4,
+      "name": "手写 popups 规则集",
+      "status": "HANDWRITTEN"
+    },
+    {
+      "file": "video.json",
+      "sourceUrl": "handwritten://SPEC-4.1（手写视频贴片/暂停广告域名规则 + 播放器 SDK allow 白名单）",
+      "fetchedAt": "2026-09-29T10:32:13Z",
+      "license": "本项目自编（MIT，见 README）",
+      "ruleCount": 16,
+      "name": "手写 video 规则集",
+      "status": "HANDWRITTEN"
+    }
+  ]
+}

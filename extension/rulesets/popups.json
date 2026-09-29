@@ -1,0 +1,6 @@
+[
+{"id":1,"priority":10,"action":{"type":"block"},"condition":{"requestDomains":["getpopunder.com","popunder.bid","popunderjs.com","popunderoctober.store","popunderstar.com","popunderz.com","uptopopunder.com"],"resourceTypes":["main_frame"]}},
+{"id":2,"priority":10,"action":{"type":"block"},"condition":{"urlFilter":"/jspopunder.js","resourceTypes":["script"]}},
+{"id":3,"priority":10,"action":{"type":"block"},"condition":{"urlFilter":"/popunder.min.js","resourceTypes":["script"]}},
+{"id":4,"priority":10,"action":{"type":"block"},"condition":{"urlFilter":"/popunderpro/","resourceTypes":["script"]}}
+]

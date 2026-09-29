@@ -1,0 +1,236 @@
+{
+  "version": "2026-09-29",
+  "matchMode": "host-suffix",
+  "note": "hosts 为后缀匹配：www.baidu.com 命中 baidu.com；hosts 为 [\"*\"] 表示所有站点。selectors 必须是浏览器原生 CSS（:has() 可用，Chrome>=111）。上游的 contains 类非标准伪类（abp 前缀写法与浏览器私写写法）已全部丢弃，未自造替代实现。所有选择器均为具体 id/class 或带结构约束（:has）的模糊类，禁止 class/id 子串匹配式宽泛写法。来源标注见各组 source 字段。",
+  "groups": [
+    {
+      "hosts": ["baidu.com"],
+      "source": "EasyList China / AdGuard Chinese + 实测 2026-09-29",
+      "note": "百度搜索结果页推广位 + 硬塞的推荐模块。tpl 为百度 SSR 稳定标识：recommend_list_san=右侧相关搜索、right_game_recommend=右侧热门游戏推荐、right_toplist1=百度热搜、recommend_list=结果里的为您推荐词块、app/rs=底部大家还在搜/相关搜索（实测 curl 抓取检索页核实）。a[class*=fengchaoContainer] 匹配的是具体类名前缀（百度凤巢专用），非词根模糊匹配。",
+      "selectors": [
+        "#content_left > div:has(.ec-tuiguang)",
+        "#content_left > div:has(span[data-tuiguang])",
+        "#content_right > div:has(span[data-tuiguang])",
+        ".c-container:has(.t > a[data-landurl])",
+        "div[data-key^=\"ad__\"]",
+        "a[class*=\"fengchaoContainer\"]",
+        ".ec_ad",
+        ".ec-fc-ad-results",
+        "#ecl-temai-general",
+        "div[tpl=\"recommend_list_san\"]",
+        "div[tpl=\"right_game_recommend\"]",
+        "div[tpl=\"right_toplist1\"]",
+        "div[tpl=\"recommend_list\"]",
+        "div[tpl=\"app/rs\"]",
+        "#rs_new"
+      ]
+    },
+    {
+      "hosts": ["sogou.com"],
+      "source": "EasyList China / w3 报告 C2（实测新发现）",
+      "note": "搜狗结果页推广位。.ad-results 为实测新增（广告容器外框）。",
+      "selectors": [
+        ".ad_result",
+        ".ad-results",
+        "#PZL",
+        "#PZR",
+        "div[id^=\"ad_result_page1_\"]",
+        ".tgad-box",
+        ".js-ad-item",
+        ".pop-tuiguang"
+      ]
+    },
+    {
+      "hosts": ["so.com", "haosou.com", "360.cn"],
+      "source": "EasyList China / AdGuard Chinese",
+      "note": "360 搜索（so.com / haosou.com）推广位与右侧推广位。",
+      "selectors": [
+        ".g-a-noline[data-md*=\"sad\"]",
+        "#e_idea_pp",
+        "#e_idea_left",
+        "#e_idea_frame_0",
+        "#m-spread-left",
+        "#so_kw-ad",
+        ".res-mediav",
+        ".atom-adv",
+        "#so_bd-ad"
+      ]
+    },
+    {
+      "hosts": ["bing.com"],
+      "source": "EasyList / AdGuard Chinese",
+      "note": "必应搜索结果页广告（左栏与右栏），aclk 链接为必应广告跳转特征。",
+      "selectors": [
+        "ol#b_results > li.b_algo:has(.b_title a[href^=\"https://www.bing.com/aclk?\"])",
+        "ol#b_results > li:has(a[href^=\"https://www.bing.com/aclk?\"])",
+        ".b_ad",
+        ".pa_sb",
+        ".mmaAdCard",
+        ".top-ads-separator-enabled",
+        ".b_bza_pole"
+      ]
+    },
+    {
+      "hosts": ["google.com", "google.com.hk", "google.com.tw", "google.co.jp", "google.co.uk", "google.de", "google.fr", "google.cn"],
+      "source": "uBlock Origin uAssets / EasyList",
+      "note": "Google 搜索结果页广告（顶部/底部/右侧购物单元）。OcdnDb 等短类名为 Google 自己的广告容器标记。",
+      "selectors": [
+        "#tads[aria-label]",
+        "#tadsb[aria-label]",
+        ".uEierd",
+        ".cu-container",
+        "div[data-text-ad]",
+        "a[href^=\"/aclk?sa=\"]",
+        "div[data-is-ad=\"1\"]",
+        ".commercial-unit-desktop-rhs",
+        ".OcdnDb"
+      ]
+    },
+    {
+      "hosts": ["duckduckgo.com"],
+      "source": "EasyList",
+      "note": "DuckDuckGo 常规结果页广告。",
+      "selectors": [
+        ".result--ad",
+        "a[href*=\"duckduckgo.com/y.js?\"]",
+        ".result__badge-wrap:has(button.badge--ad)"
+      ]
+    },
+    {
+      "hosts": ["lite.duckduckgo.com"],
+      "source": "EasyList",
+      "note": "DuckDuckGo lite 版结果页广告行。",
+      "selectors": [
+        "tr.result-sponsored"
+      ]
+    },
+    {
+      "hosts": ["youtube.com"],
+      "source": "uBlock Origin uAssets / EasyList",
+      "note": "YouTube 静态广告层（播放器广告 UI）。SSAI/SABR 服务端合流广告无法用 CSS 处理，见 guard-iso 视频状态机与 SPEC 0 节限制。",
+      "selectors": [
+        ".video-ads",
+        ".ytp-ad-overlay-container",
+        ".ytp-ad-module"
+      ]
+    },
+    {
+      "hosts": ["iqiyi.com"],
+      "source": "AdGuard Chinese / EasyList China",
+      "note": "爱奇艺暂停广告层与黑屏广告层。",
+      "selectors": [
+        ".maxPauseAd-container",
+        ".overlayAd-container",
+        ".definitionAd-container",
+        ".black-screen[data-cupid=\"adblock-blackscreen\"]"
+      ]
+    },
+    {
+      "hosts": ["v.qq.com"],
+      "source": "AdGuard Chinese / EasyList China",
+      "note": "腾讯视频贴片/暂停/侧边广告层。仅按 v.qq.com 限定，避免影响 qq.com 其它页面。",
+      "selectors": [
+        ".txp_ad",
+        ".txp_zt",
+        ".txp_ad_center",
+        ".game-switch-ad",
+        ".player-side-ads"
+      ]
+    },
+    {
+      "hosts": ["youku.com"],
+      "source": "AdGuard Chinese / EasyList China",
+      "note": "优酷暂停广告层、播放器广告层与历史记录页广告包裹。",
+      "selectors": [
+        "#youku-pause-container",
+        ".youku-advertise-layer",
+        "#player-advertise",
+        "div[data-adext]",
+        ".historyrecord_adwrap"
+      ]
+    },
+    {
+      "hosts": ["mgtv.com"],
+      "source": "AdGuard Chinese",
+      "note": "芒果 TV 广告层。",
+      "selectors": [
+        ".as_stages-wrapper",
+        "mango-ad-layer",
+        "mango-ad-outter-layer"
+      ]
+    },
+    {
+      "hosts": ["sohu.com"],
+      "source": "AdGuard Chinese / EasyList China",
+      "note": "搜狐视频贴片/底部广告位（#miaozhenad 为秒针广告容器）。",
+      "selectors": [
+        "#miaozhenad",
+        ".middle-insert-ad",
+        "#bottomBanner"
+      ]
+    },
+    {
+      "hosts": ["le.com"],
+      "source": "AdGuard Chinese",
+      "note": "乐视视频广告层。",
+      "selectors": [
+        ".min_pause_img",
+        ".ad_layer",
+        ".broadcast-adv"
+      ]
+    },
+    {
+      "hosts": ["bilibili.com"],
+      "source": "AdGuard Chinese / uBlock Origin uAssets",
+      "note": "B 站首页/动态/播放页广告卡片。最后一条用图标 path 前缀约束「推荐位中的广告卡」，避免误伤普通视频卡。",
+      "selectors": [
+        ".ad-report",
+        ".ad-floor",
+        ".gg-floor-module",
+        ".bili-dyn-ads",
+        ".eva-banner",
+        ".adcard-content",
+        ".ad-f",
+        ".ad-e1",
+        ".banner-card",
+        ".index-promote",
+        ".bili-video-card.is-rcmd:has(.bili-video-card__stats--icon > path[d^=\"M16.9122\"])"
+      ]
+    },
+    {
+      "hosts": ["*"],
+      "source": "uBlock Origin uAssets / EasyList（通用条目）",
+      "note": "全站通用广告容器：Google GPT/AdSense、百度联盟。全部为广告专用 id 或属性，不使用模糊匹配。",
+      "selectors": [
+        "div[id^=\"div-gpt-ad\"]",
+        "div[id^=\"google_ads_\"]",
+        "div[id^=\"BAIDU_SSP__wrapper_\"]",
+        "iframe[id^=\"google_ads_iframe\"]",
+        "iframe[id^=\"aswift_\"]",
+        "iframe[src*=\"googlesyndication.com\"]",
+        "iframe[src*=\"pagead\"]",
+        "ins.adsbygoogle",
+        "[data-ad-slot]:not([data-ad-slot=\"\"])",
+        "[data-google-query-id]:not([data-google-query-id=\"\"])",
+        ".google-auto-placed",
+        ".adsbygoogle[data-ad-status=\"unfilled\"]"
+      ]
+    },
+    {
+      "hosts": ["*"],
+      "source": "自研（基于 uBO/uAssets 通用条目 + :has 结构约束，2026-09-29）",
+      "note": "有歧义的通用容器类名一律加 :has 结构约束：只有当容器内部确实含广告 iframe/AdSense 单元时才隐藏，避免误伤通知、登录等正常浮层。",
+      "selectors": [
+        ".overlay:has(> iframe[src*=\"googlesyndication.com\"])",
+        ".popup-mask:has(iframe[src*=\"googlesyndication.com\"])",
+        "#popups:has(iframe[src*=\"googlesyndication.com\"])",
+        ".modal-ad:has(iframe[src*=\"doubleclick.net\"])",
+        ".float-layer:has(iframe[src*=\"pagead\"])",
+        ".ad-slot:has(ins.adsbygoogle)",
+        ".ad-wrap:has(ins.adsbygoogle)",
+        ".ad-container:has(ins.adsbygoogle)",
+        ".ad-frame:has(iframe[src*=\"googlesyndication.com\"])"
+      ]
+    }
+  ]
+}

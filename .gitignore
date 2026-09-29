@@ -1,0 +1,25 @@
+# 依赖与构建缓存（不要提交）
+node_modules/
+.cache/
+*.tgz
+
+# Chrome 加载未打包扩展后生成的缓存（不要提交）
+extension/_metadata/
+
+# 日志与临时文件
+*.log
+npm-debug.log*
+yarn-error.log*
+.tmp/
+.tmp-*
+*.tmp
+
+# 编辑器 / 系统
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# 注意：extension/rulesets/*.json 与 extension/icons/*.png 是交付物，必须提交，切勿忽略
+# 注意：userscript/adcleaner.user.js 同样是交付物，必须提交
