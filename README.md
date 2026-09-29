@@ -32,6 +32,7 @@ adblocker/
 │   ├── build-rules.mjs           下载 + 转换 + 后处理 + 校验规则集
 │   ├── make-icons.mjs            零依赖手写 PNG 图标生成
 │   ├── build-userscript.mjs      油猴脚本打包
+│   ├── pack.mjs                  免安装 ZIP 打包（npm run pack）
 │   ├── verify.mjs                零依赖自检（npm run verify）
 │   ├── stub-dom.mjs              回归自测共享桩 DOM / 虚拟时钟 / 迷你选择器引擎
 │   ├── selftest-guard-iso.mjs    guard-iso.js 回归自测（npm test）
@@ -43,6 +44,8 @@ adblocker/
 
 ## 安装（手动加载已解压扩展）
 
+> 不想自己构建：到 GitHub Releases 下载免安装 ZIP，解压后按包里的「使用说明.txt」操作即可。
+
 1. 安装依赖并生成产物（图标与规则集已提交，通常可直接跳到第 3 步）：
 
    ```bash
@@ -50,6 +53,7 @@ adblocker/
    npm run build:rules           # 下载真实过滤列表并生成 extension/rulesets/*.json
    npm run build:icons           # 生成 extension/icons/*.png（零依赖）
    npm run build:userscript      # 生成 userscript/adcleaner.user.js（可选）
+   npm run pack                  # 打包免安装 ZIP：dist/AdCleaner-v<版本>.zip（可选）
    ```
 
 2. （可选）自检：`npm run verify`（零依赖；等价于 `node --check` 全部 `.js/.mjs` + `JSON.parse` 全部 `.json` +

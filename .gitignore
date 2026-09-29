@@ -6,6 +6,9 @@ node_modules/
 # Chrome 加载未打包扩展后生成的缓存（不要提交）
 extension/_metadata/
 
+# 打包产物（发 Release 用，不进 git）
+dist/
+
 # 日志与临时文件
 *.log
 npm-debug.log*
